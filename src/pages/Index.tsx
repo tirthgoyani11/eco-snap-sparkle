@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { FeatureTile } from "@/components/FeatureTile";
 import { TestimonialCard } from "@/components/TestimonialCard";
+import { ParticleField } from "@/components/ParticleField";
 import { 
   Scan, 
   Play, 
@@ -100,6 +101,7 @@ export default function Index() {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 eco-gradient opacity-30" />
+        <ParticleField count={30} />
         
         {/* Floating Orbs */}
         <motion.div
@@ -176,8 +178,9 @@ export default function Index() {
               >
                 <Link to="/scanner">
                   <Button 
-                    size="lg" 
-                    className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-lg px-8 py-6 rounded-xl group"
+                    variant="premium"
+                    size="xl"
+                    className="group"
                   >
                     <Scan className="h-5 w-5 mr-3 group-hover:scale-110 transition-transform" />
                     Try the Scanner
@@ -186,9 +189,9 @@ export default function Index() {
                 </Link>
                 
                 <Button 
-                  variant="outline" 
-                  size="lg"
-                  className="glass-button text-lg px-8 py-6 rounded-xl group"
+                  variant="glass" 
+                  size="xl"
+                  className="group"
                 >
                   <Play className="h-5 w-5 mr-3 group-hover:scale-110 transition-transform" />
                   View Demo

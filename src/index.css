@@ -160,6 +160,14 @@
     @apply animate-[pulseGlow_2s_ease-in-out_infinite];
   }
   
+  .animate-bounce-subtle {
+    @apply animate-[bounceSubtle_1s_ease-in-out_infinite];
+  }
+  
+  .animate-wiggle {
+    @apply animate-[wiggle_0.5s_ease-in-out];
+  }
+  
   .animate-float {
     @apply animate-[float_3s_ease-in-out_infinite];
   }
@@ -193,6 +201,27 @@
     }
     50% {
       transform: translateY(-10px);
+    }
+  }
+  
+  @keyframes bounceSubtle {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+  
+  @keyframes wiggle {
+    0%, 100% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(-1deg);
+    }
+    75% {
+      transform: rotate(1deg);
     }
   }
   

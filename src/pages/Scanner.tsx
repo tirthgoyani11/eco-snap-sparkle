@@ -8,8 +8,10 @@ import { ProductCard } from "@/components/ProductCard";
 import { AlternativeCard } from "@/components/AlternativeCard";
 import { LoadingSpinner } from "@/components/LoadingSpinner";
 import { ErrorState } from "@/components/ErrorState";
+import { ScanningOverlay } from "@/components/ScanningOverlay";
 import { useScannerMock } from "@/hooks/useScannerMock";
 import { useToast } from "@/hooks/use-toast";
+import { useHapticFeedback } from "@/hooks/useHapticFeedback";
 import { 
   Scan, 
   Camera, 
@@ -23,8 +25,10 @@ import {
 export default function Scanner() {
   const { state, result, startScan, reset, isScanning, hasResult, hasError } = useScannerMock();
   const { toast } = useToast();
+  const { triggerHaptic } = useHapticFeedback();
 
   const handleScan = () => {
+    triggerHaptic('medium');
     startScan();
     toast({
       title: "Scanning started",
@@ -33,6 +37,7 @@ export default function Scanner() {
   };
 
   const handleSwap = (alternative: any) => {
+    triggerHaptic('success');
     toast({
       title: "Great choice!",
       description: `Swapped to ${alternative.name} - ${alternative.savings}% better for the environment!`,
@@ -132,6 +137,9 @@ export default function Scanner() {
                   )}
                 </div>
 
+                {/* Enhanced Scanning Overlay */}
+                <ScanningOverlay isVisible={isScanning} progress={isScanning ? 75 : 0} />
+
                 {/* Shimmer Effect when scanning */}
                 {isScanning && (
                   <motion.div
@@ -139,16 +147,6 @@ export default function Scanner() {
                     animate={{ x: "100%" }}
                     transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                  />
-                )}
-
-                {/* Scanning Grid Overlay */}
-                {isScanning && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: [0, 1, 0] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                    className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1)_1px,transparent_1px)] [background-size:20px_20px]"
                   />
                 )}
               </div>
@@ -172,8 +170,9 @@ export default function Scanner() {
                 <Button
                   onClick={handleScan}
                   disabled={isScanning}
-                  size="lg"
-                  className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-lg py-6 rounded-xl group"
+                  variant="premium"
+                  size="xl"
+                  className="w-full group"
                 >
                   <AnimatePresence mode="wait">
                     {isScanning ? (
@@ -206,8 +205,8 @@ export default function Scanner() {
                 {(hasResult || hasError) && (
                   <Button
                     onClick={reset}
-                    variant="outline"
-                    className="w-full glass-button"
+                    variant="glass"
+                    className="w-full"
                   >
                     <RefreshCw className="h-4 w-4 mr-2" />
                     Reset Scanner
