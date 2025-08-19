@@ -14,7 +14,240 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      alternatives: {
+        Row: {
+          badges: string[] | null
+          brand: string | null
+          carbon_footprint: number | null
+          created_at: string
+          eco_score: number | null
+          id: string
+          image_url: string | null
+          metadata: Json | null
+          name: string
+          original_product_id: string | null
+          price: number | null
+          reasons: string[] | null
+          savings_percentage: number | null
+        }
+        Insert: {
+          badges?: string[] | null
+          brand?: string | null
+          carbon_footprint?: number | null
+          created_at?: string
+          eco_score?: number | null
+          id?: string
+          image_url?: string | null
+          metadata?: Json | null
+          name: string
+          original_product_id?: string | null
+          price?: number | null
+          reasons?: string[] | null
+          savings_percentage?: number | null
+        }
+        Update: {
+          badges?: string[] | null
+          brand?: string | null
+          carbon_footprint?: number | null
+          created_at?: string
+          eco_score?: number | null
+          id?: string
+          image_url?: string | null
+          metadata?: Json | null
+          name?: string
+          original_product_id?: string | null
+          price?: number | null
+          reasons?: string[] | null
+          savings_percentage?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "alternatives_original_product_id_fkey"
+            columns: ["original_product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      chat_sessions: {
+        Row: {
+          context_product_id: string | null
+          created_at: string
+          id: string
+          messages: Json | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          context_product_id?: string | null
+          created_at?: string
+          id?: string
+          messages?: Json | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          context_product_id?: string | null
+          created_at?: string
+          id?: string
+          messages?: Json | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "chat_sessions_context_product_id_fkey"
+            columns: ["context_product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      products: {
+        Row: {
+          badges: string[] | null
+          barcode: string | null
+          brand: string | null
+          carbon_footprint: number | null
+          created_at: string
+          eco_score: number | null
+          id: string
+          image_url: string | null
+          metadata: Json | null
+          name: string
+          recyclable: boolean | null
+          sustainable: boolean | null
+          updated_at: string
+        }
+        Insert: {
+          badges?: string[] | null
+          barcode?: string | null
+          brand?: string | null
+          carbon_footprint?: number | null
+          created_at?: string
+          eco_score?: number | null
+          id?: string
+          image_url?: string | null
+          metadata?: Json | null
+          name: string
+          recyclable?: boolean | null
+          sustainable?: boolean | null
+          updated_at?: string
+        }
+        Update: {
+          badges?: string[] | null
+          barcode?: string | null
+          brand?: string | null
+          carbon_footprint?: number | null
+          created_at?: string
+          eco_score?: number | null
+          id?: string
+          image_url?: string | null
+          metadata?: Json | null
+          name?: string
+          recyclable?: boolean | null
+          sustainable?: boolean | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          eco_score_avg: number | null
+          full_name: string | null
+          id: string
+          points: number
+          total_co2_saved: number
+          total_scans: number
+          updated_at: string
+          user_id: string
+          username: string | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          eco_score_avg?: number | null
+          full_name?: string | null
+          id?: string
+          points?: number
+          total_co2_saved?: number
+          total_scans?: number
+          updated_at?: string
+          user_id: string
+          username?: string | null
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          eco_score_avg?: number | null
+          full_name?: string | null
+          id?: string
+          points?: number
+          total_co2_saved?: number
+          total_scans?: number
+          updated_at?: string
+          user_id?: string
+          username?: string | null
+        }
+        Relationships: []
+      }
+      scans: {
+        Row: {
+          alternatives_suggested: number | null
+          co2_footprint: number | null
+          created_at: string
+          detected_name: string | null
+          eco_score: number | null
+          id: string
+          image_url: string | null
+          metadata: Json | null
+          points_earned: number | null
+          product_id: string | null
+          scan_type: string
+          user_id: string
+        }
+        Insert: {
+          alternatives_suggested?: number | null
+          co2_footprint?: number | null
+          created_at?: string
+          detected_name?: string | null
+          eco_score?: number | null
+          id?: string
+          image_url?: string | null
+          metadata?: Json | null
+          points_earned?: number | null
+          product_id?: string | null
+          scan_type: string
+          user_id: string
+        }
+        Update: {
+          alternatives_suggested?: number | null
+          co2_footprint?: number | null
+          created_at?: string
+          detected_name?: string | null
+          eco_score?: number | null
+          id?: string
+          image_url?: string | null
+          metadata?: Json | null
+          points_earned?: number | null
+          product_id?: string | null
+          scan_type?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "scans_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
