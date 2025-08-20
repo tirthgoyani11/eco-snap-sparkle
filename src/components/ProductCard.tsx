@@ -41,7 +41,7 @@ export function ProductCard({ product, onViewDetails, className = "" }: ProductC
               {/* Eco Score Ring Overlay */}
               <div className="absolute top-3 right-3">
                 <div className="glass-card p-2 rounded-full">
-                  <ScoreRing score={product.ecoScore} size="sm" />
+                  <ScoreRing score={product.eco_score} size="sm" />
                 </div>
               </div>
             </motion.div>
@@ -73,7 +73,7 @@ export function ProductCard({ product, onViewDetails, className = "" }: ProductC
 
             {/* Carbon Footprint */}
             <div className="text-xs text-muted-foreground">
-              Carbon footprint: <span className="font-medium">{product.carbonFootprint}g CO₂</span>
+              Carbon footprint: <span className="font-medium">{product.carbon_footprint}g CO₂</span>
             </div>
 
             {/* Action Button */}

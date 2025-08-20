@@ -281,16 +281,16 @@ export default function Scanner() {
                   <CardContent className="space-y-4">
                     <div className="flex items-center justify-between">
                       <span className="font-medium">Overall Sustainability</span>
-                      <ScoreRing score={result.product.ecoScore} size="md" />
+                      <ScoreRing score={result.product.eco_score} size="md" />
                     </div>
                     
                     <div className="space-y-3">
                       <div>
                         <div className="flex justify-between text-sm mb-1">
                           <span>Carbon Footprint</span>
-                          <span>{result.product.carbonFootprint}g CO₂</span>
+                          <span>{result.product.carbon_footprint}g CO₂</span>
                         </div>
-                        <Progress value={100 - (result.product.carbonFootprint / 200) * 100} className="h-2" />
+                        <Progress value={100 - (result.product.carbon_footprint / 200) * 100} className="h-2" />
                       </div>
                       
                       <div>

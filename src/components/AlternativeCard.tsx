@@ -60,7 +60,7 @@ export function AlternativeCard({
                 
                 {/* Eco Score */}
                 <div className="flex-shrink-0">
-                  <ScoreRing score={alternative.ecoScore} size="sm" animated={false} />
+                  <ScoreRing score={alternative.eco_score} size="sm" animated={false} />
                 </div>
               </div>
 

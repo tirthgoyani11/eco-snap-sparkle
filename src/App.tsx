@@ -11,6 +11,7 @@ import BulkScan from "./pages/BulkScan";
 import Dashboard from "./pages/Dashboard";
 import Leaderboard from "./pages/Leaderboard";
 import ARPreview from "./pages/ARPreview";
+import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -100,6 +101,19 @@ const App = () => (
                     transition={{ duration: 0.22 }}
                   >
                     <ARPreview />
+                  </motion.div>
+                } 
+                />
+              <Route 
+                path="/settings" 
+                element={
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.22 }}
+                  >
+                    <Settings />
                   </motion.div>
                 } 
               />

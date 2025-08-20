@@ -58,8 +58,8 @@ export default function BulkScan() {
         name: product.name,
         image: product.image,
         brand: product.brand,
-        ecoScore: product.ecoScore,
-        carbonFootprint: product.carbonFootprint,
+        ecoScore: product.eco_score,
+        carbonFootprint: product.carbon_footprint,
         status: 'scanned' as const,
       };
     });
@@ -78,8 +78,8 @@ export default function BulkScan() {
       name: product.name,
       image: product.image,
       brand: product.brand,
-      ecoScore: product.ecoScore,
-      carbonFootprint: product.carbonFootprint,
+    ecoScore: product.eco_score,
+    carbonFootprint: product.carbon_footprint,
       status: 'scanned',
     };
     
