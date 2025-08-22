@@ -22,6 +22,7 @@ A premium, glassmorphism-styled React application for scanning products and disc
 - **Framer Motion** for smooth animations and page transitions
 - **React Router** for navigation
 - **Lucide React** for beautiful icons
+- **Supabase** for backend and edge functions
 
 ## 🎨 Design System
 
